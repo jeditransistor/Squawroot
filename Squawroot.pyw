@@ -18,11 +18,18 @@ installdate, trash = test
 #msgbox(installdate)
 #msgbox(platform.node())
 formatit = False
+reasons = "Reason/s "
+
 
 if ((time() - installdate) > 63113904):
 	formatit = True
+	reasons = reasons + "| Install date "
+	
 
-BSOD = len(os.listdir("c:\windows\minidump"))
+if os.path.exists("c:\windows\minidump"):
+	BSOD = len(os.listdir("c:\windows\minidump"))
+else:
+	BSOD = 0
 
 
 #msgbox(BSOD)
@@ -30,6 +37,7 @@ BSOD = len(os.listdir("c:\windows\minidump"))
 
 if (BSOD > 9):
 	formatit = True
+	reasons = reasons + "| Too many BSODs "
 
 #msgbox(sys.getwindowsversion())
 #msgbox(platform.release())
@@ -37,6 +45,7 @@ if (BSOD > 9):
 version = platform.release()
 if (version == "Vista"):
 	formatit = True
+	reasons = reasons + "| Because Vista "
 
 service, service2, service3, service4 = platform.win32_ver()	
 
@@ -45,5 +54,6 @@ service, service2, service3, service4 = platform.win32_ver()
 	
 if (formatit):
 	msgbox("Format recommended")
+	msgbox(reasons)
 else:
 	msgbox("Format is not needed")
