@@ -15,8 +15,8 @@ aReg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
 aKey = OpenKey(aReg, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\")
 test = QueryValueEx(aKey, "InstallDate")
 installdate, trash = test
-msgbox(installdate)
-msgbox(platform.node())
+#msgbox(installdate)
+#msgbox(platform.node())
 formatit = False
 
 if ((time() - installdate) > 63113904):
@@ -25,14 +25,14 @@ if ((time() - installdate) > 63113904):
 BSOD = len(os.listdir("c:\windows\minidump"))
 
 
-msgbox(BSOD)
+#msgbox(BSOD)
 
 
 if (BSOD > 9):
 	formatit = True
 
-msgbox(sys.getwindowsversion())
-msgbox(platform.release())
+#msgbox(sys.getwindowsversion())
+#msgbox(platform.release())
 
 version = platform.release()
 if (version == "Vista"):
@@ -40,7 +40,7 @@ if (version == "Vista"):
 
 service, service2, service3, service4 = platform.win32_ver()	
 
-msgbox(service4)
+#msgbox(service4)
 
 	
 if (formatit):
